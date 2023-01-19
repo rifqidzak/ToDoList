@@ -6,6 +6,9 @@ http://{{url}}:8080
 ```
 ## Database
 ```
+http://{{url}}:5432
+```
+```
 POSTGRE SQL
 ```
 ##### Query:
