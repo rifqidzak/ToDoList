@@ -15,7 +15,7 @@ POSTGRE SQL
 #### Category
 
 ```
-GET http://localhost:8080/category
+GET /category
 
 Response :
 {
@@ -30,7 +30,7 @@ Response :
 }
 ```
 ```
-GET http://localhost:8080/category/{id}
+GET /category/{id}
 
 Response :
 {
@@ -44,13 +44,48 @@ Response :
 ```
 
 ```
-DELETE http://localhost:8080/category/{id}
+POST /category
+Request Body :
+{
+  "category": "string"
+}
+
+Response :
+{
+  "data": {
+    "id": "string"
+  },
+  "message": "string"
+}
+```
+
+```
+PUT /category
+Request Body:
+{
+  "id": "string",
+  "category": "string"
+}
+
+Response:
+{
+  "data": {
+    "version": 0
+  },
+  "message": "string"
+}
+```
+
+```
+DELETE /category/{id}
 
 Response :
 {
   "message": "string"
 }
 ```
+
+
 
 
 
