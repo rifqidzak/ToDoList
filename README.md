@@ -1,10 +1,12 @@
 # ToDoList
 
 ## API Documentation
+##### API PORT:
 ```
 http://{{url}}:8080
 ```
 ## Database
+##### DB PORT:
 ```
 http://{{url}}:5432
 ```
