@@ -31,48 +31,48 @@ import com.demo.todolist.service.category.UpdateCategoryService;
 @RequestMapping("category")
 public class CategoryController {
 
-    @Autowired
-    InsertCategoryService insertCategoryService;
-    
-    @Autowired
-    UpdateCategoryService updateCategoryService;
-    
-    @Autowired
-    GetAllCategoryService getAllCategoryService;
-    
-    @Autowired
-    GetByIdCategoryService getByIdCategoryService;
-    
-    @Autowired
-    DeleteCategoryService deleteCategoryService;
-    
+	@Autowired
+	InsertCategoryService insertCategoryService;
+
+	@Autowired
+	UpdateCategoryService updateCategoryService;
+
+	@Autowired
+	GetAllCategoryService getAllCategoryService;
+
+	@Autowired
+	GetByIdCategoryService getByIdCategoryService;
+
+	@Autowired
+	DeleteCategoryService deleteCategoryService;
+
 	@GetMapping
 	public ResponseEntity<GetResDto<List<GetCategoryDataDto>>> getAll() {
 		final GetResDto<List<GetCategoryDataDto>> data = getAllCategoryService.getAllCategory();
 		return new ResponseEntity<>(data, HttpStatus.OK);
 	}
-	
+
 	@GetMapping("{id}")
 	public ResponseEntity<GetResDto<GetCategoryDataDto>> getById(@PathVariable String id) {
 		final GetResDto<GetCategoryDataDto> data = getByIdCategoryService.getByIdCategory(id);
 		return new ResponseEntity<>(data, HttpStatus.OK);
 	}
-	
-    @PostMapping
+
+	@PostMapping
 	public ResponseEntity<InsertResDto> insert(@RequestBody InsertCategoryDto data) {
 		final InsertResDto result = insertCategoryService.insert(data);
 		return new ResponseEntity<>(result, HttpStatus.CREATED);
 	}
-    
-    @PutMapping
+
+	@PutMapping
 	public ResponseEntity<UpdateResDto> update(@RequestBody UpdateCategoryDto data) {
 		final UpdateResDto result = updateCategoryService.update(data);
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
-    
-    @DeleteMapping("{id}")
-   	public ResponseEntity<DeleteResDto> delete(@PathVariable String id) {
-   		final DeleteResDto result = deleteCategoryService.delete(id);
-   		return new ResponseEntity<>(result, HttpStatus.OK);
-   	}
+
+	@DeleteMapping("{id}")
+	public ResponseEntity<DeleteResDto> delete(@PathVariable String id) {
+		final DeleteResDto result = deleteCategoryService.delete(id);
+		return new ResponseEntity<>(result, HttpStatus.OK);
+	}
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,12 +15,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.demo.todolist.dto.DeleteResDto;
 import com.demo.todolist.dto.GetResDto;
 import com.demo.todolist.dto.InsertResDto;
 import com.demo.todolist.dto.UpdateResDto;
 import com.demo.todolist.dto.activity.GetActivityDataDto;
 import com.demo.todolist.dto.activity.InsertActivityDto;
 import com.demo.todolist.dto.activity.UpdateActivityDto;
+import com.demo.todolist.service.activity.DeleteActivityService;
 import com.demo.todolist.service.activity.GetAllActivityActiveService;
 import com.demo.todolist.service.activity.GetAllActivityByCategoryActiveService;
 import com.demo.todolist.service.activity.GetAllActivityByCategoryExpiredService;
@@ -51,11 +54,13 @@ public class ActivityController {
 	private GetSearchingActivityActive getSearchingActivityActive;
 	@Autowired
 	private GetSearchingActivityExpired getSearchingActivityExpired;
+	@Autowired
+	private DeleteActivityService deleteActivityService;
 	
 	@GetMapping
-	public ResponseEntity<GetResDto<List<GetActivityDataDto>>> getAllActive(@RequestParam Boolean active, @RequestParam(required = false) String categoryCode) {
+	public ResponseEntity<GetResDto<List<GetActivityDataDto>>> getAllActive(@RequestParam Boolean active) {
 		GetResDto<List<GetActivityDataDto>> data = new GetResDto<>();
-		if(categoryCode == null) {
+		if(active) {
 			if (active) {
 				data = getAllActivityActiveService.getAllActivityActive();
 			} else {
@@ -102,6 +107,12 @@ public class ActivityController {
 	@PutMapping
 	public ResponseEntity<UpdateResDto>update(@RequestBody UpdateActivityDto data){
 		final UpdateResDto result = updateActivityService.update(data);
+		return new ResponseEntity<>(result, HttpStatus.OK);
+	}
+
+	@DeleteMapping("{id}")
+	public ResponseEntity<DeleteResDto> delete(@PathVariable String id) {
+		final DeleteResDto result = deleteActivityService.delete(id);
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 }
