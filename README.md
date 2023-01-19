@@ -5,19 +5,21 @@
 http://{{url}}:8080
 ```
 
-#### Database
+### Database
 ```
 POSTGRE SQL
 ```
-"CREATE DATABASE todolist;"
+```
+CREATE DATABASE todolist;
 ```
 
-#### Category
+### Category
 
-```
+```http
 GET /category
-
-Response :
+```
+##### Response :
+```
 {
   "data": [
     {
@@ -29,10 +31,12 @@ Response :
   ]
 }
 ```
-```
+---------------------------------------------------------------------------------------
+```http
 GET /category/{id}
-
-Response :
+```
+##### Response :
+```
 {
   "data": {
     "code": "string",
@@ -42,15 +46,18 @@ Response :
   }
 }
 ```
-
-```
+---------------------------------------------------------------------------------------
+```http
 POST /category
-Request Body :
+```
+##### Request Body :
+```
 {
   "category": "string"
 }
-
-Response :
+```
+##### Response :
+```
 {
   "data": {
     "id": "string"
@@ -58,16 +65,19 @@ Response :
   "message": "string"
 }
 ```
-
-```
+---------------------------------------------------------------------------------------
+```http
 PUT /category
-Request Body:
+```
+##### Request Body:
+```
 {
   "id": "string",
   "category": "string"
 }
-
-Response:
+```
+##### Response:
+```
 {
   "data": {
     "version": 0
@@ -75,11 +85,13 @@ Response:
   "message": "string"
 }
 ```
-
-```
+---------------------------------------------------------------------------------------
+```http
 DELETE /category/{id}
+```
 
-Response :
+##### Response :
+```
 {
   "message": "string"
 }
