@@ -8,7 +8,7 @@ http://{{url}}:8080
 #### Database
 ```
 POSTGRE SQL
-
+```
 "CREATE DATABASE todolist;"
 ```
 
