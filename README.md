@@ -125,7 +125,7 @@ active = false (untuk mendapatkan activity yang masih expired atau sudah lewat)
 ```
 ---------------------------------------------------------------------------------------
 ```http
-/activity/{id}
+GET /activity/{id}
 ```
 ##### Response :
 ```
@@ -175,6 +175,81 @@ active = false (untuk mendapatkan activity yang masih expired atau sudah lewat)
 }
 ```
 ---------------------------------------------------------------------------------------
-
+```http
+GET /activity/category?categoryId=string&active=boolean
+```
+##### Request Param:
+```
+active = true (untuk mendapatkan activity yang masih aktif)
+active = false (untuk mendapatkan activity yang masih expired atau sudah lewat)
+```
+##### Response :
+```
+{
+  "data": [
+    {
+      "id": "string",
+      "title": "string",
+      "description": "string",
+      "startTime": "2023-01-19T03:11:31.697Z",
+      "endTime": "2023-01-19T03:11:31.697Z",
+      "categoryName": "string",
+      "categoryCode": "string",
+      "finished": true,
+      "isActive": true,
+      "version": 0
+    }
+  ]
+}
+```
+---------------------------------------------------------------------------------------
+```http
+POST /activity
+```
+##### Request Body :
+```
+{
+  "title": "string",
+  "description": "string",
+  "startTime": "2023-01-19T03:31:31.076Z",
+  "endTime": "2023-01-19T03:31:31.076Z",
+  "categoryId": "string"
+}
+```
+##### Response :
+```
+{
+  "data": {
+    "id": "string"
+  },
+  "message": "string"
+}
+```
+---------------------------------------------------------------------------------------
+```http
+PUT /activity
+```
+##### Request Body:
+```
+{
+  "title": "string",
+  "description": "string",
+  "startTime": "2023-01-19T03:37:00.574Z",
+  "endTime": "2023-01-19T03:37:00.574Z",
+  "finished": true,
+  "categoryId": "string",
+  "id": "string"
+}
+```
+##### Response:
+```
+{
+  "data": {
+    "version": 0
+  },
+  "message": "string"
+}
+```
+---------------------------------------------------------------------------------------
 
 
